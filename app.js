@@ -6,6 +6,7 @@ import dish from "./models/dish.js"
 import connect from "./config/database.js"
 import { fileURLToPath } from "url";
 import { dirname } from "path";
+import router from "./routes/route.js"
 
 // Define __filename and __dirname
 const __filename = fileURLToPath(import.meta.url);
@@ -30,7 +31,8 @@ app.get("/", async (req, res) => {
     res.sendFile(path.join(__dirname, "index.html"))
 })
 
-// TO-DO: Mount routes
+// Mount routes
+app.use("/api", router)
 
 // Define port and start server
 const port = process.env.PORT || 3000
